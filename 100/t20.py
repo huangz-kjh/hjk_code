@@ -21,9 +21,14 @@ class Solution(object):
                 stacks.append(i)
                 flag += 1
 
+        print(stacks)
         return not bool(flag)
 
 if __name__=="__main__":
-    s = input("请输入字符串")
-    sol = Solution()
-    print(sol.isValid(s))
+    while 1:
+        s = input("请输入字符串,'#'退出:")
+        if s == '#':
+            break
+        else:
+            sol = Solution()
+            print(sol.isValid(s))
