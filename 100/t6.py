@@ -1,23 +1,26 @@
 class Solution(object):
     def convert(self, s, numRows):
+        """
+        :type s: str
+        :type numRows: int
+        :rtype: str
+        """
         if numRows == 1 or numRows >= len(s):
             return s
 
-        rows = [''] * numRows
+        rows = ['' for _ in range(numRows)]
         cur_row = 0
-        going_down = False
+        flag = False
 
         for c in s:
             rows[cur_row] += c
-
-            # 到顶或到底，改变方向
+            # 到顶了或者到底了换一个方向
             if cur_row == 0 or cur_row == numRows - 1:
-                going_down = not going_down
+                flag = not flag
 
-            cur_row += 1 if going_down else -1
+            cur_row = cur_row + 1 if flag else cur_row - 1
 
         return ''.join(rows)
-
 
 
 if __name__ == "__main__":
