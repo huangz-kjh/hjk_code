@@ -20,11 +20,8 @@ if __name__ == "__main__":
         # rows = int(input("请输入rows："))
         s1 = list(map(int, input("请输入s1：").split()))
         s2 = list(map(int, input("请输入s2：").split()))
-        if s1 == '#':
-            break
-        else:
-            sol = Solution()
-            print(sol.findMedianSortedArrays(s1, s2))
+        sol = Solution()
+        print(sol.findMedianSortedArrays(s1, s2))
 
 
 
