@@ -18,8 +18,8 @@ class Solution(object):
 if __name__ == "__main__":
     while 1:
         # rows = int(input("请输入rows："))
-        s1 = list(map(int, input("请输入s1,‘#’退出：").split()))
-        s2 = list(map(int, input("请输入s2,‘#’退出：").split()))
+        s1 = list(map(int, input("请输入s1：").split()))
+        s2 = list(map(int, input("请输入s2：").split()))
         if s1 == '#':
             break
         else:
