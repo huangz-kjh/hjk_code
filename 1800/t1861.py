@@ -1,16 +1,34 @@
 class Solution(object):
-    def rotateTheBox(self, box):
-        m, n = len(box), len(box[0])
+    def rotateTheBox(self, boxGrid):
+        """
+        :type boxGrid: List[List[str]]
+        :rtype: List[List[str]]
+        """
+        m, n = len(boxGrid), len(boxGrid[0])
 
-        # Step1: 模拟石头下落（向右）
-        for row in box:
-            empty = n - 1  # 最右侧空位
+        for row in boxGrid:
+            empty = n - 1
             for j in range(n - 1, -1, -1):
-                if row[j] == '*':
+                if row[j] == "*":
                     empty = j - 1
                 elif row[j] == '#':
-                    row[j], row[empty] = '.', '#'
+                    row[j], row[empty] = row[empty], row[j]
                     empty -= 1
 
-        # Step2: 顺时针旋转
-        return list(zip(*box[::-1]))
+
+        # print(boxGrid)
+        # 转置
+        transposed_boxGrid = [list(row) for row in zip(*boxGrid)]
+        # 水平翻转
+        for row in transposed_boxGrid:
+            row.reverse()
+
+        return transposed_boxGrid
+        # print(transposed_boxGrid)
+
+if __name__ == "__main__":
+    while 1:
+        n = int(input('请输入n：'))
+        s = [list(input('请输入每一列：').split()) for _ in range(n)]
+        sol = Solution()
+        print(sol.rotateTheBox(s))
