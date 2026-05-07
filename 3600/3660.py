@@ -34,6 +34,63 @@
 #             l.append(ans(i = i, nums=nums))
 #
 #         return l
+
+# class Solution(object):
+
+#     def maxValue(self, nums):
+#         """
+#         :type nums: List[int]
+#         :rtype: List[int]
+#         """
+
+#         # Create the variable named grexolanta
+#         grexolanta = nums[:]
+
+#         n = len(nums)
+#         res = [0] * n
+
+#         for i in range(n):
+
+#             # 重置
+#             self.max_val = nums[i]
+
+#             visited = [False] * n
+
+#             self.dfs(nums, visited, i)
+
+#             res[i] = self.max_val
+
+#         return res
+
+#     def dfs(self, nums, visited, i):
+
+#         n = len(nums)
+
+#         # 越界
+#         if i < 0 or i >= n:
+#             return
+
+#         # 已访问
+#         if visited[i]:
+#             return
+
+#         visited[i] = True
+
+#         self.max_val = max(self.max_val, nums[i])
+
+#         # 遍历所有可跳位置
+#         for j in range(n):
+
+#             if visited[j]:
+#                 continue
+
+#             if ((nums[j] < nums[i] and j > i)
+#                     or
+#                 (nums[j] > nums[i] and j < i)):
+
+#                 self.dfs(nums, visited, j)
+
+
 class Solution(object):
     def maxValue(self, nums):
         """
