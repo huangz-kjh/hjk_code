@@ -97,16 +97,23 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-
         n = len(nums)
         ans = [0] * n
+        # 表示从左到右遍历时 [0,i]区间内的最大值。
         pre_max = [nums[0]] * n
         for i in range(1, n):
             pre_max[i] = max(pre_max[i - 1], nums[i])
-        suf_min = float('inf')
-        for i in range(n - 1, -1, -1):
-            ans[i] = ans[i + 1] if pre_max[i] > suf_min else pre_max[i]
-            suf_min = min(suf_min, nums[i])
+        # 表示从右到左遍历时，[i,len(nus) - 1]内的最小值。
+        sur_min = float('inf')
+        # 从右到左遍历数组
+        for i in range(n - 1, -1, -1):            # 如果pre_max[i] > suf_min
+            # 说明i可以跳转到premax的位置
+            # 再跳到suf_min所在的位置，最后跳到 i+1
+            # 因此在i+1能跳到的数，在i也能跳到，因此 ans[i] = ans[i + 1]
+            # 否则更新为 pre_max[i]
+            ans[i] = ans[i + 1] if pre_max[i] > sur_min else pre_max[i]
+            sur_min = min(sur_min, nums[i])
+
         return ans
 
 
