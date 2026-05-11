@@ -31,27 +31,7 @@ class Solution(object):
 
         return dp[m][n]
 
-# class Solution(object):
-#     def isMatch(self, s, p):
-#
-#         def match(i, j):
-#             # 能走完，那就是正确的
-#             if j == len(p):
-#                 return i == len(s)
-#
-#             # 当前是否匹配
-#             first_match = i < len(s) and (p[j] == s[i] or p[j] == '.')
-#
-#             # 下一个是‘*’
-#             if j + 1 < len(p) and p[j + 1] == '*':
-#                 return (
-#                     match(i, j+2) or  # 用0次
-#                     (first_match & match(i + 1, j))  # 用 >= 1次
-#                 )
-#             else:
-#                 return first_match & match(i + 1, j + 1)
-#
-#         return match(0, 0)
+
 
 
 if __name__ == "__main__":
